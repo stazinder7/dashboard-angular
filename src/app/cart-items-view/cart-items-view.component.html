@@ -1,0 +1,40 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<section class="content-block">
+  <div class="bg-wrapper"></div>
+  <div class="container-fluid">
+    <div class="content-block-wrapper card">
+      <h2 class="title">{{title | uppercase}}</h2>
+      <table class=" striped table collapsed mytable">
+        <thead>
+          <tr>
+            <th *ngFor="let thead of carthead">{{thead}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ttext of shop.cart let i = index">
+            <td>{{i+1}}</td>
+            <td>{{ttext.pro_id}}</td>
+            <td>
+              <div class="pro_details"><span class="pro_img_icons"><img src="{{ttext.pro_img}}"
+                    alt="" /></span>{{ttext.pro_name}}</div>
+            </td>
+            <td>{{ttext.pr_col}}</td>
+            <td>{{ttext.pro_cat}}</td>
+            <td><input type="number" class="counter" id="counter" (change)="counter($event.target,i)"
+                [value]="ttext.quantity" minlength="0" /></td>
+            <td><span class="old-price">{{ttext.old_Price | currency}}</span>{{ttext.pro_price | currency}}</td>
+            <td>{{ttext.total_price | currency}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="7" class="text-right">SubTotal() </th>
+            <td>swd</td>
+          </tr>
+        </tfoot>
+      </table>
+      <a href="javascript:void(0)" class="custom-btn btn buy-btn waves-effect waves-light" routerLink="/checkout">Proceed To Buy</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+<aside class="sidebar">
+  <div class="side-header">
+    <a class="logo" href="javascript:void(0)" routerLink="dashboard"
+    routerLinkActive="active">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKjJ4BKWDkf79pT4u4eCqL5D0eH7zkDexEJd3tpLs_ih4_uGVU" alt="logo" class="full-logo"/>
+      <img src="https://cdn2.hubspot.net/hubfs/5003576/outgrow.jpg" alt="mob-logo" class="mob-logo"/>
+    </a>
+    <a class="navbar-toggler" href="javascript:void(0)"><i class="material-icons">keyboard_arrow_right</i></a>
+  </div>
+  <ul class="side-nav collapsible">
+    <li *ngFor="let NavItems of Nav;let i=index">
+      <a href="javascript:void(0)" routerLink="{{NavItems.route}}"
+      routerLinkActive="active" class="waves-effect  "  [class.active]="i==0" [class.collapsible-header]="NavItems.subList" tabindex="0">
+        <i class="material-icons">{{NavItems.icons}}</i>
+        <span class="menu-title">{{NavItems.name}}</span>
+       </a>
+      <ul class="collapsible-body" style="display: block;" *ngIf="NavItems.subList">
+        <li *ngFor="let innerNavItems of NavItems.subList">
+          <a class="waves-effect" href="javascript:void(0)" ><i class="material-icons">radio_button_unchecked</i><span>{{innerNavItems}}</span></a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</aside>

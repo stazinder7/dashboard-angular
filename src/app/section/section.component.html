@@ -1,0 +1,126 @@
+<section class="content-block">
+  <div class="bg-wrapper"></div>
+  <div class="container-fluid">
+    <div class="content-block-wrapper card">
+      <!-- <h1>{{title | uppercase }} </h1>
+      <button class="btn" (click)="myclick($event)"  >Click me</button>
+      <div class="col m3 l3">
+      <select (change)="funchange($event)" style="display: block" >
+        <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,0]">{{i}}</option>
+      </select>
+    </div>
+    <h4>Currency Pipe</h4>
+    <b>{{6589.23 | currency:"USD"}}</b><br/>
+    <b>{{6589.23 | currency:"USD":true}}</b><br>
+    <h1>Date pipe</h1>
+      <b>{{todaydate | date:'d/M/y'}}</b><br/>
+      <b>{{todaydate | date:'shortTime'}}</b>78.2222222222
+
+      <br/>
+      <b>{{months | slice:2:6}}</b>
+      <span *ngIf="tt;then condition1 else condition2">Condition is valid.</span>
+      <ng-template #condition1>Condition is valid from template</ng-template>
+      <ng-template #condition2>Condition is invalid from template</ng-template> -->
+      <div class="row">
+        <div class="col m3 l3" *ngFor="let widItems of widgets; let i = index">
+          <div
+            class="widget-box widget"
+            [ngClass]="{
+              'gradient-blue': i == 0,
+              'gradient-pink': i == 1,
+              'gradient-amber': i == 2,
+              'gradient-green': i == 3
+            }"
+          >
+            <div class="widget-icons">
+              <i class="material-icons">{{ widItems.widIcons }}</i>
+            </div>
+            <div class="widget-cont">
+              <h4>
+                {{ widItems.widContValue
+                }}<span>{{ widItems.widContText }}</span>
+              </h4>
+            </div>
+            <div class="widget-overview">
+              <p>
+                <span>{{ widItems.widOverviewText }}</span
+                ><span class="right">{{ widItems.widOverviewValue }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-content">
+        <h5 class="inner-suub-heading">Page Length Options</h5>
+        <div class="dataTables_length left" id="page-length-option_length">
+          <label
+            >Show
+            <select class="pageselect" (change)="pagelength($event)">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="-1">All</option>
+            </select>
+            entries</label
+          >
+        </div>
+        <div id="page-length-option_filter" class="dataTables_filter right">
+          <label
+            >Search:<input
+              type="search"
+              class=""
+              [(ngModel)]="searchText"
+              autocomplete="off"
+              placeholder=""
+              aria-controls="page-length-option"
+          /></label>
+        </div>
+        <table class="striped table collapsed mytable">
+          <thead>
+            <tr>
+              <th *ngFor="let thead of mytable">{{ thead }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ttext of resultantArray | filter : searchText">
+              <td>{{ ttext.Name }}</td>
+              <td>{{ ttext.Position }}</td>
+              <td>{{ ttext.Office }}</td>
+              <td>{{ ttext.Age }}</td>
+              <td>{{ ttext.StartDate }}</td>
+              <td>
+                <a href="javascript:void(0)" class="btn del-btn">{{
+                  ttext.Action
+                }}</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="pagination right">
+          <span class="prev"
+            ><a
+              href="javascript:void(0)"
+              (click)="decrementpage()"
+              [class.disbaled]="current == 1"
+              >Previous</a
+            ></span
+          >
+          <li [class.active]="current == page" *ngFor="let page of pageArray">
+            <a (click)="pageclick(page)" href="javascript:void(0)">{{
+              page
+            }}</a>
+          </li>
+          <span class="next"
+            ><a
+              href="javascript:void(0)"
+              (click)="incrementpage()"
+              [class.disbaled]="current == pageArray.length"
+              >Next</a
+            ></span
+          >
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

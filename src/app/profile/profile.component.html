@@ -1,0 +1,92 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<section class="content-block">
+  <div class="bg-wrapper"></div>
+  <div class="container-fluid">
+    <div class="content-block-wrapper card">
+      <div class="profile-info">
+        <div class="profile-pic">
+          <img src="{{user.profilePic}}" />
+        </div>
+        <div class="basic-content">
+          <h2>{{user.name}}</h2>
+          <p class="designation">{{user.designation}}</p>
+        </div>
+      </div>
+      <div class="profile-content">
+        <div class="row">
+          <div class="col m8">
+            <ul class="tabs custom-tabs">
+              <li class="tab"><a href="#Information" class="active">Information</a></li>
+              <li class="tab"><a  href="#Feeds">Feeds</a></li>
+              <li class="tab"><a href="#Agenda">Agenda</a></li>
+              <li class="tab"><a href="#Photos">Photos</a></li>
+
+            </ul>
+
+            <div id="Information" class="">
+              <ul class="personal-info">
+                <li class="info-list" *ngFor="let info of personalInfo"><label>{{info.label}}</label><span>{{info.Value}}</span></li>
+              </ul>
+            </div>
+            <div id="Feeds" class="">
+              <div class="feed-block">
+                <div class="feed-list" *ngFor="let data of userPosts; let ind = index" >
+                  <div class="user-info">
+                    <div class="user-pic">
+                      <img
+                        src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/user/12.jpg" />
+                    </div>
+                    <h3>{{user.name}}</h3>
+                    <p class="date">5 days ago</p>
+                  </div>
+                  <div class="user-content">
+                    <p>{{data.content}}</p>
+                  </div>
+                  <ul class="feed-action">
+                    <li ><a class ="favorite_border{{ind}}" href="javascript:void(0)" (click)="clickEventHandler(ind)"><i class="material-icons">favorite_border</i></a><span>{{data.likedBy.length}}</span></li>
+                    <li><a class ="chat_bubble_outline" href="javascript:void(0)" (click)="openCommentSection(ind)"><i class="material-icons">chat_bubble_outline</i></a><span>{{data.comments.length}}</span></li>
+                    <li><a class ="redo" href="javascript:void(0)" (click)="clickEventHandler('redo')"><i class="material-icons">redo</i></a><span>{{data.likedBy.length}}</span></li>
+                  </ul>
+                  <div class="commnet-section commentSection{{ind}}">
+                    <div class="comment-list" [ngClass]="{last: i,first:f}" *ngFor="let comment of data.comments;let i=last; let f=first">
+                        <div class="user-info">
+                            <div class="user-pic">
+                              <img
+                                src="https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/user/12.jpg" />
+                            </div>
+                            <h3>{{comment.userName}}</h3>
+                            <p class="date">5 days ago</p>
+                          </div>
+                          <div class="user-content">
+                            <p>{{comment.commentText}}</p>
+                          </div>
+                    
+                      </div>
+                    <div class="comment-box">
+                     <input type="text" class="custom-input" placeholder="Write Your comment here..." #txt>
+                      <button type="button" class="btn send-btn" (click)="clickAddComments(txt.value,data.comments)"><i class="material-icons">send</i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="Agenda" class="">Test 3</div>
+            <div id="Photos" class="">
+              <div class="photo-gallery">
+                <div class="photo-gallery-list" *ngFor="let photos of gallery">
+                  <figure><img src="{{photos.imagepath}}" class="materialboxed" alt="img"/></figure>
+                  <figcaption>{{photos.imageText}}</figcaption>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="col m4">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

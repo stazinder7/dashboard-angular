@@ -1,0 +1,100 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<section class="content-block">
+    <div class="bg-wrapper"></div>
+    <div class="container-fluid">
+        <div class="content-block-wrapper card">
+            <div class="row">
+                <div class="col  fixed-width">
+                    <div class="categories">
+                        <div class="block">
+                            <h3>Categories</h3>
+                            <ul>
+                                <li *ngFor='let catitems of cat let i = index' (click)='cat_filter(catitems.name,i)'
+                                    [ngClass]="{'active': menuNumber == i}"><a href="javascript:void(0)"><i
+                                            class="material-icons">{{catitems.icons}}
+                                        </i>{{catitems.name}}</a></li>
+                            </ul>
+
+                        </div>
+                        <div class="block">
+                            <h3>Color</h3>
+                            <form>
+                                <label class="form-label" *ngFor='let colors of color'
+                                    (click)='col_filter(colors)'><input type="checkbox" class="filled-in"
+                                        name="check"><span> <span class="lens"
+                                            [ngStyle]="{'backgroundColor': colors}"></span>{{colors}}</span></label>
+                            </form>
+                        </div>
+                        <!-- <div class="block">
+                            <h3>Price</h3>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="col open-width">
+                    <div class="row">
+                        <div class="col l3 s4 m4" *ngFor='let productItems of resultantProduct'>
+                            <div class="product" [ngClass]="{'sale':productItems.old_Price}" >
+                                <div class="card-badge" *ngIf="productItems.old_Price?true:false"><a class="white-text"> <b>Sale</b> </a></div>
+                                <div class="card-badge trend" *ngIf="productItems.trend"><a class="white-text"> <b>Trending</b> </a></div>
+                                <div class="product-img">
+                                    <img src='{{productItems.pro_img}}' alt="" />
+                                    <ul class="actions">
+                                        <li (click)='add_cart(productItems)'><a href="javascript:void(0)" class="waves-effect waves-light"><i
+                                                    class="material-icons"> shopping_cart
+                                                </i></a></li>
+                                        <li><a href="#modal1" class="modal-trigger waves-effect waves-light" (click)="pro_view(productItems)"><i
+                                                    class="material-icons">
+                                                    remove_red_eye</i></a></li>
+
+
+                                    </ul>
+                                </div>
+                                <div class="product-cont">
+                                    <h3 class="pro_name">{{productItems.pro_name  | slice:0:30}}</h3>
+                                    <p class="pro_cat"><label>Category</label><span>{{productItems.pro_cat}}</span></p>
+                                    <p class="pro_cat"> <label>Product Id</label><span>{{productItems.pro_id}}</span>
+                                    </p>
+                                    <p class="descreption">{{productItems.pro_des | slice:0:40}}</p>
+                                    <h5 class="price"><span
+                                            class="old-price">{{productItems.old_Price | currency}}</span>{{productItems.pro_price | currency }}
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nopro" *ngIf="!resultantProduct?.length > 0">
+                            <div class="no-pro"><img src="http://www.toyjunction.in/images/item_no.png" /></div>
+                        </div>
+                    </div>
+                    <ul class="pagination right">
+                        <span class="prev"><a href="javascript:void(0)" (click)="decrementpage()"
+                                [class.disbaled]="current == 1">Previous</a></span>
+                        <li [class.active]="current == page" *ngFor="let page of pageArray"><a (click)="pageclick(page)"
+                                href="javascript:void(0)" class="waves-effect waves-light">{{page}}</a></li>
+                        <span class="next"><a href="javascript:void(0)" (click)="incrementpage()"
+                                [class.disbaled]="current == pageArray.length">Next</a></span>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="modal1" class="modal">
+    <div class="modal-content" *ngIf="proView">
+        <div class="pro_view">
+            <div class="pro_image-sec">
+                <img src="{{proView.pro_img}}" alt="{{proView.pro_img}}" />
+            </div>
+
+            <div class="pro_cont">
+                <h3 class="pro_name">{{proView.pro_name }}</h3>
+                <p class="pro_cat"><label>Category</label><span>{{proView.pro_cat}}</span></p>
+                <p class="pro_cat"> <label>Product Id</label><span>{{proView.pro_id}}</span></p>
+                <p class="descreption">{{proView.pro_des}}</p>
+                <h5 class="price"><span class="old-price">{{proView.old_Price | currency}}</span>{{proView.pro_price | currency}}</h5>
+                <button type="button" class="btn custom-btn cart-btn waves-effect waves-light" (click)='add_cart(proView)'><i
+                        class="material-icons"> shopping_cart</i>Add To Cart</button>
+            </div>
+        </div>
+    </div>

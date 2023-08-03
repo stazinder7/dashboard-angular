@@ -1,0 +1,46 @@
+<section class="outer-section">
+        <div class="wrapper">
+            <div class="login-block">
+                <div class="bg-section left-part" style="background-image: url('assets/images/bg.jpg')"></div>
+                <div class="right-part">
+                    <h2>Hye there, Welcome Back</h2>
+                    <p>Enter Your Signin details below</p>
+                    <form class="col s12"   >
+                        <div class="row">
+                            <div class="input-field col s12 m6">
+                                <input id="fname" type="text" class="validate" name="fname"   required minlength="4"   ngModel >
+                                <label for="fname">First Name</label>
+
+                            </div>
+                            <div class="input-field col s12 m6">
+                                <input id="lname" type="text" class="validate" name="lname"   required minlength="4"  ngModel>
+                                <label for="lname">Last Name</label>
+
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="email" type="email" class="validate" name="email"   required minlength="4"  ngModel>
+                                <label for="email">Email</label>
+
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="password" type="password" class="validate" name="password"   required minlength="4"  ngModel>
+                                <label for="password">Password</label>
+
+                            </div>
+                            <div class="input-field col s12">
+                                <input id="cnfrm-password" type="password" class="validate" name="cpassword"  ngModel>
+                                <label for="cnfrm-password">Confirm Password</label>
+
+                            </div>
+
+                            <button class="btn waves-effect waves-light custom-btn" type="submit" name="action" >Submit
+                            </button>
+                            <p class="signup-text"> Already have Account?
+                                <a href="javascript:void(0)" routerLink="/login" routerLinkActive="active">Sign in</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>

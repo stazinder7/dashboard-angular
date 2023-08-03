@@ -1,0 +1,42 @@
+<section class="outer-section">
+  <div class="wrapper">
+    <div class="login-block">
+      <div class="bg-section left-part" style="background-image: url('assets/images/bg.jpg')"></div>
+      <div class="right-part">
+        <h2>Hye there, Welcome Back</h2>
+        <p>Enter Your Signin details below</p>
+        <form class="col s12" name="loginform" id="loginform" #userlogin="ngForm" method="get"
+          (ngSubmit)="onSubmit(userlogin.value)">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="email" type="email" class="validate" name="name1" required minlength="4" ngModel />
+              <label for="email">Email</label>
+            </div>
+            <div class="input-field col s12">
+              <input id="password" type="password" class="validate" name="password1" required minlength="4" ngModel />
+              <label for="password">Password</label>
+            </div>
+            <div class="input-field col s12">
+              <p class="checkbox-block">
+                <label>
+                  <input type="checkbox" class="filled-in" checked="checked" />
+                  <span>Remember me?</span>
+                </label>
+                <a href="forgetpass.html" class="forgetpass">Forget Password?</a>
+              </p>
+            </div>
+            <!-- <a routerLink="/dashboard" routerLinkActive="active">Submit</a> -->
+            <button class="btn waves-effect waves-light custom-btn" type="submit" name="action">
+              Submit
+            </button>
+            <!-- <button class="btn waves-effect waves-light custom-btn" type="submit" name="action" (click)="router.navigate(['/dashboard'])">Submit</button> -->
+            <p class="signup-text">
+              Dont have Account?
+              <a href="javascript:void(0)" routerLink="/signup" routerLinkActive="active">Create Account</a>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

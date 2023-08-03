@@ -1,0 +1,84 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<section class="content-block">
+    <div class="bg-wrapper"></div>
+    <div class="container-fluid">
+        <div class="content-block-wrapper card">
+            <h2 class="title">CONTACT</h2>
+            <div class="row">
+                <div class="col l5 s5 m5 nopad">
+                    <form (ngSubmit)="onSubmit(contactform.value)" name="Contactform" id="contactForm" #contactform="ngForm">
+                        <div class="row">
+                            <div class="form-group input-field col s6 l6 m6">
+                                <input type="text" class="fomrControl" id="Name" name="name" pattern="[a-zA-Z ]*"
+                                    autofocus required minlength="4" ngModel #NAME="ngModel" />
+                                <label for="Name">Name</label>
+                                <div class="error-msg" *ngIf="(NAME.touched && !NAME.valid )|| !NAME.valid ">
+                                    <span class="error-msg" *ngIf="NAME.errors.required">Name is Required</span>
+                                    <span class="error-msg" *ngIf="NAME.errors.minlength">Minimun length 4 is
+                                        required</span>
+                                    <span class="error-msg" *ngIf="NAME.errors.pattern">Only Alphabets
+                                        required</span>
+                                </div>
+                            </div>
+                            <div class="form-group input-field col s6 l6 m6">
+                                <input type="email" class="formControl" id="Email" name="email"
+                                    pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})"
+                                    required minlength="4" ngModel #emailId="ngModel" />
+                                <label for="Email">Email</label>
+                                <div class="error-msg" *ngIf="(emailId.touched && !emailId.valid) || !emailId.valid">
+                                    <span class="error-msg" *ngIf="emailId.errors.required">Email is Required</span>
+                                    <span class="error-msg" *ngIf="emailId.errors.minlength">Minimun length 4 is
+                                        required</span>
+                                    <span class="error-msg" *ngIf="emailId.errors.pattern">Invalid Email Pattern</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group input-field col s6 l6 m6">
+                                <input type="email" class="formControl" id="Phone" name="phone" pattern="[0-9]+"
+                                    required minlength="10" maxlength="10" ngModel #phoneNo="ngModel" />
+                                <label for="Phone">Mobile number</label>
+                                <div class="error-msg" *ngIf="(phoneNo.touched && !phoneNo.valid) || !phoneNo.valid">
+                                    <span class="error-msg" *ngIf="phoneNo.errors.required">Mobile number is
+                                        Required</span>
+                                    <span class="error-msg" *ngIf="phoneNo.errors.minlength">Minmum length of Phone
+                                        Number
+                                        is 10</span>
+                                    <span class="error-msg" *ngIf="phoneNo.errors.pattern">Invalid Mobile number </span>
+                                </div>
+                            </div>
+                            <div class="form-group input-field col s6 l6 m6">
+                                <input type="text" class="formControl" name="state" id="State" required ngModel
+                                    #STATE="ngModel" />
+                                <label for="State">State</label>
+                                <div class="error-msg" *ngIf="(STATE.touched && !STATE.valid)|| !STATE.valid">
+                                    <span class="error-msg" *ngIf="STATE.errors.required">Fill the Required field</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group input-field col s12 l12 m12">
+                                <textarea class="formControl materialize-textarea" name="msg" id="Msg" ngModel
+                                    #MSG="ngModel"></textarea>
+                                <label for="MSG">Message</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 l12 m12">
+                                <button type="submit" class="custom-btn btn buy-btn submit-btn waves-effect waves-light"
+                                    [disabled]="contactform.invalid">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col l7 s7 m7">
+                    <div class="sup" *ngFor="let num of number; let i = index" [ngClass]="{'three':i==3 , 'four':i==4}">
+{{num}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

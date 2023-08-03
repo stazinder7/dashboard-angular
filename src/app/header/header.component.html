@@ -1,0 +1,27 @@
+<header class="navbar-fixed">
+    <nav class="navbar-wrapper">
+        <div class="searchbar">
+            <i class="material-icons">search</i>
+            <input class="search-input" type="text" name="Search" placeholder="Search here">
+        </div>
+        <ul class="nav-right right">
+            <li><a class="waves-effect waves-block waves-light notification-button" href="javascript:void(0);"
+                   routerLink="/cartItems_View"><i class="material-icons">shopping_cart</i><small
+                    class="notification-badge">{{shop.cart.length}}</small></a>
+            </li>
+            <li>
+                <a class="waves-effect profile-button dropdown-trigger" href="javascript:void(0);"
+                    data-target="profile-dropdown"><span class="avatar-status"><img src="assets/images/avatr.jpg"
+                            alt="avatar"><i></i></span></a>
+                <ul class="dropdown-content" id="profile-dropdown">
+                    <li *ngFor="let dropdownItems of Dropdown;let i=index">
+                        <a class="waves-effect" href="javascript:void(0);" routerLink="{{dropdownItems.route}}"
+                            routerLinkActive="active"><i
+                                class="material-icons">{{dropdownItems.icons}}</i>{{dropdownItems.name}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+</header>
